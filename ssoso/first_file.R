@@ -153,21 +153,23 @@ for(i in 1:100){
     '1' = cat(i,'- ')
   )
 }
-  
-name <- 'Choi'
-kor <- sample(1:100,1,replace = TRUE)
-eng <- sample(1:100,1,replace = TRUE)
-math <- sample(1:100,1,replace = TRUE)
-avg <- mean(c(kor,eng,math)) %/% 1
-cat('name :',name,'| kor :',kor,'| eng :',eng,'| math :',math,'| sum :',sum(kor,eng,math),'| avg :',avg,'| grade :',
-  if(avg<50) "F" else
-    switch(
-      toString(avg%/%10),
-      "10" = "A",
-      "9" = "A",
-      "8" = "B",
-      "7" = "C",
-      "6" = "D",
-      "5" = "E"
-    )
-  )
+ 
+## stmt 를 합치면 function 이 된다.
+## 4가지가 반드시 있어야 function 이 된다..R syntax
+grade <- function(name,kor,eng,math){
+  return (c(name, sum(c(kor,eng,math)), mean(c(kor,eng,math)) %/% 1,if(mean(c(kor,eng,math))<50) "F" else
+                                    switch(
+                                    toString(mean(c(kor,eng,math)) %/% 10),
+                                        "10" = "A",
+                                        "9" = "A",
+                                        "8" = "B",
+                                        "7" = "C",
+                                        "6" = "D",
+                                        "5" = "E" )))
+}
+
+res <- grade("Choi",sample(40:100,1,replace = TRUE),sample(40:100,1,replace = TRUE),sample(40:100,1,replace = TRUE))
+cat(res)
+cat("│   이   름     │ 총점  │ 평균  │ 학점  │\n")
+cat("│   ",res[1],"     │ ",res[2]," │ ",res[3],"  │  ",res[4],"  │\n")
+
