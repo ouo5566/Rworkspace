@@ -51,7 +51,7 @@ print(res)
 #pie(grade.data$g_avg,paste(grade.data$g_name,"(",(grade.data$g_avg/sum(c(grade.data$g_avg)))%/%0.01,"%)"))
 #barplot(grade.data$g_avg,names.arg = paste(grade.data$g_name,"\n(", grade.data$g_avg,"점)"),xlab = "평균",ylab = "점수")
 
-
+# 과목별 학생 점수
 plot(c(grade.data[1,2],grade.data[1,3],grade.data[1,4],grade.data[1,6]), type="o", col="purple", ylim=range(0,100), axes=FALSE, ann=FALSE)
 axis(1, at=1:4,c("국어","영어","수학","평균"))
 axis(2, las=1, at=20*0:100) 
@@ -60,6 +60,15 @@ lines(c(grade.data[3,2],grade.data[3,3],grade.data[3,4],grade.data[3,6]), type =
 lines(c(grade.data[4,2],grade.data[4,3],grade.data[4,4],grade.data[4,6]), type = "o", col = "pink")
 lines(c(grade.data[5,2],grade.data[5,3],grade.data[5,4],grade.data[5,6]), type = "o", col = "green")
 legend(1,30, c(grade.data[1,1],grade.data[2,1],grade.data[3,1],grade.data[4,1],grade.data[5,1]), cex=0.7, col=c("purple","blue","red","pink","green"),pch=21 ,lty=1:1)
+
+# 학생별 과목 점수
+plot(grade.data$g_kor, type="o", col="purple", ylim=range(0,100), xlab = "STUDENT", ylab = "SCORE" , axes=FALSE)
+lines(grade.data$g_eng, type = "o", col = "blue")
+lines(grade.data$g_math, type = "o", col = "red")
+axis(1, at=1:5,grade.data$g_name)
+axis(2, las=1, at=10*0:100)
+legend(1,25,c("kor","eng","math"), cex = 0.8, col = c(1,2,3),pch=21 ,lty=1:1)
+
 
 
 ##Create the data frame.
