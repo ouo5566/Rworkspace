@@ -9,6 +9,7 @@ hist(c(9,13,21,8,36,22,12,41,31,33,19),xlab = "Weight",col = "yellow",border = "
 #라인차트
 plot(c(7,12,28,3,41),type = "o")
 #산포도
+mtcars
 input <- mtcars[,c('wt','mpg')]
 print(input)
 plot(x = input$wt,y = input$mpg,
