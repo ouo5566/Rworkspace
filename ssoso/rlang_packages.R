@@ -30,7 +30,7 @@ qplot(data = mpg, x = cty)
 # 내가 모르는 데이터 파악방법
 # mpg 데이터를 데이터 프레임으로 만든다.
 
-mpg <- as.data.frame(ggplot2::mpg)
+mpg <- as.data.frame(ggplot2::mpg) ## 필수
 head(mpg) ## 상위 5개의 데이터를 보여준다.
 tail(mpg) ## 하위 5개의 데이터를 보여준다.
 dim(mpg) ## dim : dimention 디멘션 = 행, 열 구조를 보여준다.
@@ -102,7 +102,7 @@ midwest$asian <- midwest$popasian
 # 백분율' 파생변수를만들고, 히스토그램을 만들어 도시들이
 # 어떻게 분포하는지 살펴보시오.
 midwest$asian_per<- (( midwest$asian / midwest$total ) * 100) %/%0.01 * 0.01
-hist(ylim = range(0,midwest$asian_per,350),midwest$asian_per,xlab = "COUNTRY",ylab = "ASIAN")
+hist(ylim = range(0,midwest$asian_per,350),midwest$asian_per,xlab = "ASIAN_PER",ylab = "COUNTRY")
 
 # 아시아 인구 백분율 전체 평균을 구하고, 평균을 초과하고
 # 'large' , 그 외에는 'small' 을 부여하는 파생변수를 만드시오.
@@ -111,7 +111,6 @@ hist(ylim = range(0,midwest$asian_per,350),midwest$asian_per,xlab = "COUNTRY",yl
 mean(midwest$asian_per)
 midwest$asian_flag <- ifelse(midwest$asian_per > mean(midwest$asian_per),"large","small")
 qplot(midwest$asian_flag)
-
 
 # 문제를 전부 푼 후 ...
 # 변환된 데이터를 csv 파일로 저장합니다.
